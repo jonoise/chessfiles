@@ -1,0 +1,84 @@
+.button {
+  position: relative;
+  font-family: inherit;
+  font-size: 18px;
+  border-radius: 40em;
+  width: 8em;
+  height: 2.5rem;
+  z-index: 1;
+  color: white;
+  overflow: hidden;
+  border: none;
+}
+
+.text {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  line-height: 2.5rem;
+  border-radius: 40em;
+  border: none;
+  background: linear-gradient(
+    rgba(255, 255, 255, 0.473),
+    rgba(150, 150, 150, 0.25)
+  );
+  z-index: 1;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.button .blob {
+  position: absolute;
+  z-index: -1;
+  border-radius: 5em;
+  width: 5em;
+  height: 2.5rem;
+  transition: transform 0.3s ease-in-out, background 0.3s ease-in-out;
+}
+
+.button .blob:nth-child(2) {
+  left: 0em;
+  top: 0;
+  background: #3417b7;
+}
+
+.button .blob:nth-child(3) {
+  left: 1.8em;
+  top: 0;
+  z-index: -1;
+  background: #0f57ff;
+}
+
+.button .blob:nth-child(4) {
+  left: 4em;
+  top: -1em;
+  background: #1bffe1;
+}
+
+.button .blob:nth-child(5) {
+  left: 4.3em;
+  top: 1.6em;
+  background: #0061ff;
+}
+
+.button:hover .blob:nth-child(2) {
+  background: #0061ff;
+}
+
+.button:hover .blob:nth-child(3) {
+  background: #1b76ff;
+}
+
+.button:hover .blob:nth-child(4) {
+  background: #470fff;
+}
+
+.button:hover .blob:nth-child(5) {
+  background: #0f57ff;
+}
+
+.button:hover .blob {
+  transform: scale(1.3);
+}
