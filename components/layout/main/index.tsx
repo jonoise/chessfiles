@@ -16,7 +16,7 @@ export const MainLayout: FC<PropsWithChildren> = ({ children }) => {
       >
         <div className='w-40 bg-[#272522] h-screen fixed top-0 left-0 hidden lg:flex lg:flex-col space-y-4'>
           <div className='p-4'>
-            <p>CHESSIFY</p>
+            <p>CHESSFILES</p>
             <p className='text-[9px]'>Take notes of your games.</p>
           </div>
           <button onClick={() => setShowAddNoteModal(true)}>

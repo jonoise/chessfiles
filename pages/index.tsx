@@ -1,7 +1,7 @@
 import React from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import useSWR from 'swr'
-import { ChessifyLogo } from '@/components/shared/logo'
+import { ChessfilesLogo } from '@/components/shared/logo'
 import { useRouter } from 'next/router'
 import { fetcher } from '@/lib/fetcher'
 import { Note } from '@/types/notes'
@@ -25,7 +25,7 @@ const HomePage = () => {
   return (
     <div className='flex flex-col items-center space-x-2 px-4 md:px-20 lg:px-52 xl:px-96 space-y-5'>
       <div className='flex w-full items-center space-x-2 mt-20'>
-        <ChessifyLogo />
+        <ChessfilesLogo />
         <input
           type='text'
           className='border py-2 rounded-full w-full px-4'

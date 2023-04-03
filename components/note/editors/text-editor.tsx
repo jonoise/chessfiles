@@ -1,4 +1,4 @@
-import { FC, useCallback, useMemo, useState } from 'react'
+import { FC, useCallback, useEffect, useMemo, useState } from 'react'
 import { Modal, UseModalProps } from '@/components/shared/modal'
 import dynamic from 'next/dynamic'
 import 'react-quill/dist/quill.snow.css'
@@ -17,6 +17,7 @@ export const TextEditor: FC<UseModalProps & { text?: Text }> = ({
   const useNote = useNoteStore((s) => s)
 
   const [textContent, setText] = useState(text?.content || '')
+  const [unsavedChanges, setUnsavedChanges] = useState(false)
 
   const addText = () => {
     if (text) {
@@ -36,6 +37,34 @@ export const TextEditor: FC<UseModalProps & { text?: Text }> = ({
     }
   }
 
+  useEffect(() => {
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 's' && e.metaKey) {
+        e.preventDefault()
+        console.log(textContent)
+        console.log('save')
+        if (unsavedChanges) {
+          addText()
+          setUnsavedChanges(() => false)
+        }
+      }
+      if (e.key === 'Escape') {
+        e.preventDefault()
+        if (unsavedChanges) {
+          if (confirm('Are you sure you want to discard your changes?')) {
+            setShowModal(false)
+          } else {
+            setShowModal(false)
+          }
+        }
+      }
+    }
+    window.addEventListener('keydown', onKeyDown)
+    return () => {
+      window.removeEventListener('keydown', onKeyDown)
+    }
+  }, [unsavedChanges, textContent])
+
   return (
     <Modal showModal={showModal} setShowModal={setShowModal}>
       <div className='w-1/3'>
@@ -43,7 +72,10 @@ export const TextEditor: FC<UseModalProps & { text?: Text }> = ({
         <div className='bg-white h-72'>
           <ReactQuill
             value={textContent}
-            onChange={(content) => setText(content)}
+            onChange={(content) => {
+              setText(content)
+              setUnsavedChanges(true)
+            }}
             className='h-60'
           />
         </div>
@@ -52,7 +84,7 @@ export const TextEditor: FC<UseModalProps & { text?: Text }> = ({
             onClick={addText}
             className=' bg-white border border-zinc-300 w-full py-2 font-semibold'
           >
-            Guardar
+            Save
           </button>
         </div>
       </div>

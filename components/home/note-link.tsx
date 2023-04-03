@@ -13,7 +13,6 @@ const Chessboard = dynamic(() => import('chessboardjsx'), {
 export const NoteLink: FC<{ note: Note }> = ({ note }) => {
   const ref = React.useRef<HTMLDivElement>(null)
   const { DeleteNoteModal, setShowDeleteNoteModal } = useDeleteNoteModal()
-  console.log(note)
   return (
     <div
       ref={ref}
@@ -26,6 +25,7 @@ export const NoteLink: FC<{ note: Note }> = ({ note }) => {
           lightSquareStyle={{ backgroundColor: '#f0f0f0' }}
           darkSquareStyle={{ backgroundColor: '#60a5fa' }}
           boardStyle={{ cursor: 'pointer' }}
+          orientation={note.playingAs.value as any}
           draggable={false}
           position={note.opening.fen}
           calcWidth={() => {
