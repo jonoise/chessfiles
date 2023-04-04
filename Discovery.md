@@ -12,6 +12,5 @@ Introducing the ultimate chess companion - our note-taking app for chess games! 
 - Comprehensive note-taking capabilities, allowing you to keep track of your own strategy as well as your opponent's moves
 - Designed for both beginners and experienced players alike
 - A user-friendly interface that makes it easy to use and navigate
-- Say goodbye to scattered notes and hello to a streamlined, organized system for tracking your games
 
 Take your chess game to the next level with our note-taking app - download it today!
